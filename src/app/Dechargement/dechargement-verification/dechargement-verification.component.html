@@ -1,0 +1,20 @@
+<mat-dialog-content style="min-width: 500px; padding: 12px" class="mat-typography">
+    <ng-template>Vérification des données de déchargement</ng-template>
+
+    <mat-accordion class="example-headers-align" multi>
+        <div style="padding: 20px;">
+            <p>{{ dischargeData.discharge.navire }} - {{ dischargeData.discharge.contrat }}</p>
+        </div>
+        <mat-expansion-panel *ngFor="let dischargeData of dischargeVerificationData">
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ dischargeData.shiftDate | date:'YYYY/MM/dd' }} - Shift {{dischargeData.shiftOrder}} - {{dischargeData.sumQtyDischarged}} T </mat-panel-title>
+            </mat-expansion-panel-header>
+    
+            <div *ngFor="operator of dischargeData['operators']; let idx = index;">
+              <p>{{ dischargeData['operators'][idx]['operatorName'] }} - {{ dischargeData['operators'][idx]['qtyDischarged'] }} T</p>
+
+            </div>
+          </mat-expansion-panel>
+    </mat-accordion>
+
+</mat-dialog-content>

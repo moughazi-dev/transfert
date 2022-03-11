@@ -1,0 +1,304 @@
+<mat-dialog-content
+  style="min-width: 600px; padding: 12px"
+  class="mat-typography"
+>
+  <form style="margin: 12px 0" [formGroup]="validationDechargementFG">
+    <ng-template>Saisie déchargement</ng-template>
+
+    <div>
+      <mat-checkbox formControlName="validation">Validation</mat-checkbox>
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="valider()"
+          style="margin: 12px 0"
+          mat-button
+        >
+          Sauvegarder
+        </button>
+      </div>
+    </div>
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Informations sur le navire: Début</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="inputGrid">
+          <div class="inputGridItem1">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>NOR</mat-label>
+              <input
+                matInput
+                [matDatepicker]="norDP"
+                required="false"
+                formControlName="nor"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="norDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #norDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem2">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Début d'accostage</mat-label>
+              <input
+                matInput
+                [matDatepicker]="debutAccostageDP"
+                required="false"
+                formControlName="debutAccostage"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="debutAccostageDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #debutAccostageDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem3">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin d'accostage</mat-label>
+              <input
+                matInput
+                [matDatepicker]="finAccostageDP"
+                required="false"
+                formControlName="finAccostage"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="finAccostageDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #finAccostageDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem4">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Début draft survey</mat-label>
+              <input
+                matInput
+                formControlName="debutDraftSurvey"
+                placeholder="Début draft survey"
+                required="false"
+                type="number"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem5">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin d'draft survey</mat-label>
+
+              <input
+                matInput
+                formControlName="finDraftSurvey"
+                placeholder="Fin d'draft survey"
+                required="false"
+                type="number"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem6">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Début de déchargement</mat-label>
+              <input
+                matInput
+                [matDatepicker]="debutDechargementDP"
+                required="false"
+                formControlName="debutDechargement"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="debutDechargementDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #debutDechargementDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem7">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Délivrence de certificat de libre pratique</mat-label>
+              <input
+                matInput
+                [matDatepicker]="deliverCertifLibrePratiqueDP"
+                required="false"
+                formControlName="deliverCertifLibrePratique"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="deliverCertifLibrePratiqueDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #deliverCertifLibrePratiqueDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Informations sur le navire: Fin</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="inputGrid">
+          <div class="inputGridItem1">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin de déchargement</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endDischargeDP"
+                required="false"
+                formControlName="endDischarge"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endDischargeDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endDischargeDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem2">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin de bulldozer</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endBulldozerDP"
+                required="false"
+                formControlName="endBulldozer"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endBulldozerDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endBulldozerDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem3">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Appareillage</mat-label>
+              <input
+                matInput
+                [matDatepicker]="sailingDateDP"
+                required="false"
+                formControlName="sailingDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="sailingDateDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #sailingDateDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            >Informations sur le navire : Documents</mat-panel-title
+          >
+        </mat-expansion-panel-header>
+
+        <div style="overflow-x: scroll" class="gridsContainer">
+          <button *ngIf="!isUpdate" class="btn" (click)="addDocument()">
+            <fa-icon style="margin: 5px" [icon]="faPlus"></fa-icon>
+          </button>
+          <!-- <button *ngIf="isUpdate" class="btn" (click)="submitUpdateCargoEvent()">
+              <fa-icon style="margin: 5px" [icon]="faCheck"></fa-icon>
+            </button> -->
+
+          <div class="inputGrid">
+            <div class="inputGridItemDoc1">
+              <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Charger un document</mat-label>
+                <ngx-mat-file-input
+                  formControlName="document"
+                  placeholder="Basic Input"
+                ></ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <div class="inputGridItemDoc2">
+              <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Categorie du document</mat-label>
+                <mat-select
+                  required="false"
+                  [compareWith]="documentCompare"
+                  [(value)]="documentSelected"
+                >
+                  <mat-option
+                    *ngFor="let document of documentCategoriesList"
+                    [value]="document"
+                  >
+                    {{ document.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <table mat-table [dataSource]="documentsList">
+            <ng-container matColumnDef="date">
+              <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+                Date
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.date }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+                Nom du fichier
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.file_name }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+                Type du fichier
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.type_file.name }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+                Actions.
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <fa-icon
+                  (click)="updateDocument(element)"
+                  style="margin: 5px"
+                  [icon]="faSignature"
+                ></fa-icon>
+                <fa-icon
+                  (click)="deleteDocument(element)"
+                  style="margin: 5px"
+                  [icon]="faTrash"
+                ></fa-icon>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+</mat-dialog-content>

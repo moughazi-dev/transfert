@@ -1,0 +1,122 @@
+<mat-dialog-content style="min-width: 500px; padding: 12px" class="mat-typography">
+    <form [formGroup]="navireInfos">
+        <div class="inputGrid">
+          <div class="inputGridItem1">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>NOR</mat-label>
+              <input
+                matInput
+                [matDatepicker]="norDP"
+                required="false"
+                formControlName="nor"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="norDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #norDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem2">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Début d'accostage</mat-label>
+              <input
+                matInput
+                [matDatepicker]="debutAccostageDP"
+                required="false"
+                formControlName="debutAccostage"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="debutAccostageDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #debutAccostageDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem3">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin d'accostage</mat-label>
+              <input
+                matInput
+                [matDatepicker]="finAccostageDP"
+                required="false"
+                formControlName="finAccostage"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="finAccostageDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #finAccostageDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem4">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Début draft survey</mat-label>
+              <input
+                matInput
+                formControlName="debutDraftSurvey"
+                placeholder="Début draft survey"
+                required="false"
+                type="number"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem5">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin d'draft survey</mat-label>
+
+              <input
+                matInput
+                formControlName="finDraftSurvey"
+                placeholder="Fin d'draft survey"
+                required="false"
+                type="number"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem6">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Début de déchargement</mat-label>
+              <input
+                matInput
+                [matDatepicker]="debutDechargementDP"
+                required="false"
+                formControlName="debutDechargement"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="debutDechargementDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #debutDechargementDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem7">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Délivrence de certificat de libre pratique</mat-label>
+              <input
+                matInput
+                [matDatepicker]="deliverCertifLibrePratiqueDP"
+                required="false"
+                formControlName="deliverCertifLibrePratique"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="deliverCertifLibrePratiqueDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #deliverCertifLibrePratiqueDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div>
+          <button mat-raised-button color="primary" (click)="commncerDechargement()" mat-button >Commencer le déchargement</button>
+        </div>
+      </form>
+  </mat-dialog-content>
+  

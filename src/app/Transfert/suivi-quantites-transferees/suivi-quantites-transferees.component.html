@@ -1,0 +1,441 @@
+<div class="row">
+    <div class="col-md-2">
+        <div class="card-counter info">
+            <span class="count-numbers">Unite 1</span>
+            <span class="count-name">Data</span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card-counter info">
+            <span class="count-numbers">Unite 2</span>
+            <span class="count-name">Data</span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card-counter info">
+            <span class="count-numbers">Unite 3</span>
+            <span class="count-name">Data</span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card-counter info">
+            <span class="count-numbers">Unite 4</span>
+            <span class="count-name">Data</span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card-counter info">
+            <span class="count-numbers">Unite 5</span>
+            <span class="count-name">Data</span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card-counter info">
+            <span class="count-numbers">Unite 6</span>
+            <span class="count-name">Data</span>
+        </div>
+    </div>
+</div>
+<div class="miniComp">
+    <div class="row mb-5">
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloA1}}%</strong></span>
+                <span>Silo A</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloA1 >= 75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloA1" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA1<75 && siloPercent.siloA1>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloA1" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA1<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloA1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloA2}}%</strong></span>
+                <span>Silo A</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloA2>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloA2" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA2<75 && siloPercent.siloA2>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloA2" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA2<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloA2" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloA3}}%</strong></span>
+                <span>Silo A</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloA3>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloA3" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA3<75 && siloPercent.siloA3>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloA3" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA3<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloA3" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloA4}}%</strong></span>
+                <span>Silo A</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloA4>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloA4" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA4<75 && siloPercent.siloA4>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloA4" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA4<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloA4" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloA5}}%</strong></span>
+                <span>Silo A</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloA5>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloA5" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA5<75 && siloPercent.siloA5>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloA5" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA5<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloA5" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloA6}}%</strong></span>
+                <span>Silo A</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloA6>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloA6" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA6<75 && siloPercent.siloA6>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloA6" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloA6<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloA6" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloB1}}%</strong></span>
+                <span>Silo B</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloB1>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloB1" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB1<75 && siloPercent.siloB1>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloB1" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB1<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloB1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloB2}}%</strong></span>
+                <span>Silo B</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloB2>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloB2" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB2<75 && siloPercent.siloB2>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloB2" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB2<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloB2" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloB3}}%</strong></span>
+                <span>Silo B</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloB3>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloB3" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB3<75 && siloPercent.siloB3>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloB3" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB3<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloB3" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloB4}}%</strong></span>
+                <span>Silo B</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloB4>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloB4" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB4<75 && siloPercent.siloB4>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloB4" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB4<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloB4" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloB5}}%</strong></span>
+                <span>Silo B</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloB5>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloB5" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB5<75 && siloPercent.siloB5>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloB5" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB5<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloB5" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloB6}}%</strong></span>
+                <span>Silo B</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloB6>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloB6" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB6<75 && siloPercent.siloB6>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloB6" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloB6<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloB6" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloC1}}%</strong></span>
+                <span>Silo C</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloC1>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloC1" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC1<75 && siloPercent.siloC1>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloC1" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC1<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloC1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloC2}}%</strong></span>
+                <span>Silo C</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloC2>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloC2" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC2<75 && siloPercent.siloC2>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloC2" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC2<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloC2" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloC3}}%</strong></span>
+                <span>Silo C</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloC3>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloC3" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC3<75 && siloPercent.siloC3>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloC3" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC3<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloC3" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloC4}}%</strong></span>
+                <span>Silo C</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloC4>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloC4" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC4<75 && siloPercent.siloC4>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloC4" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC4<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloC4" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloC5}}%</strong></span>
+                <span>Silo C</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloC5>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloC5" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC5<75 && siloPercent.siloC5>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloC5" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC5<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloC5" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloC6}}%</strong></span>
+                <span>Silo C</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloC6>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloC6" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC6<75 && siloPercent.siloC6>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloC6" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloC6<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloC6" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloD1}}%</strong></span>
+                <span>Silo D</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloD1>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloD1" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD1<75 && siloPercent.siloD1>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloD1" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD1<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloD1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloD2}}%</strong></span>
+                <span>Silo D</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloD2>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloD2" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD2<75 && siloPercent.siloD2>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloD2" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD2<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloD2" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloD3}}%</strong></span>
+                <span>Silo D</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloD3>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloD3" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD3<75 && siloPercent.siloD3>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloD3" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD3<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloD3" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloD4}}%</strong></span>
+                <span>Silo D</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloD4>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloD4" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD4<75 && siloPercent.siloD4>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloD4" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD4<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloD4" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloD5}}%</strong></span>
+                <span>Silo D</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloD5>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloD5" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD5<75 && siloPercent.siloD5>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloD5" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD5<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloD5" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+        <div class="col-md-2">
+            <p>
+                <span><strong>{{siloPercent.siloD6}}%</strong></span>
+                <span>Silo D</span>
+            </p>
+              <div class="progress" *ngIf="siloPercent.siloD6>=75">
+                <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloD6" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD6<75 && nbr>=40">
+                <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloD6" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress" *ngIf="siloPercent.siloD6<40">
+                <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloD6" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-2">
+          <p>
+              <span><strong>{{siloPercent.siloE1}}%</strong></span>
+              <span>Silo E</span>
+          </p>
+            <div class="progress" *ngIf="siloPercent.siloE1>=75">
+              <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloE1" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="progress" *ngIf="siloPercent.siloE1<75 && siloPercent.siloE1>=40">
+              <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloE1" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="progress" *ngIf="siloPercent.siloE1<40">
+              <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloE1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+      </div>
+      <div class="col-md-2">
+          <p>
+              <span><strong>{{siloPercent.siloE2}}%</strong></span>
+              <span>Silo E</span>
+          </p>
+            <div class="progress" *ngIf="siloPercent.siloE2>=75">
+              <div class="progress-bar bg-success" role="progressbar" [style.width.%]="siloPercent.siloE2" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="progress" *ngIf="siloPercent.siloE2<75 && siloPercent.siloE2>=40">
+              <div class="progress-bar bg-warning" role="progressbar" [style.width.%]="siloPercent.siloE2" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="progress" *ngIf="siloPercent.siloE2<40">
+              <div class="progress-bar bg-danger" role="progressbar" [style.width.%]="siloPercent.siloE2" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+      </div>
+      
+  </div>
+</div>

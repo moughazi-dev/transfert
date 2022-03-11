@@ -1,0 +1,128 @@
+<mat-dialog-content class="mat-typography">
+  <!-- <form [formGroup]="SaisirDischargePlanDataFG"> -->
+  <!-- <form> -->
+
+    
+
+    <div class="inputGrid">
+      <div class="inputGridItem1">
+        <button class="btn" (click)="addZone()">
+          <fa-icon style="margin: 5px" [icon]="faPlus"></fa-icon>
+        </button>
+      </div>
+    </div>
+    
+    <div *ngFor="let zone of zoneList">
+      <div class="inputGrid">
+
+        <div class="inputGridItem1">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Selection du type</mat-label>
+            <mat-select
+              [compareWith]="typeComparisonn"
+              [(value)]="zone.cargoDischargeTypeId"
+            >
+              <mat-option
+                *ngFor="let cargoDischargeType of cargoDischargeTypesList"
+                [value]="cargoDischargeType.id"
+              >
+                {{ cargoDischargeType.typeName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="inputGridItem2">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Selection du mode</mat-label>
+            <mat-select
+              [compareWith]="modeComparison"
+              [(value)]="zone.cargoDischargeModeId"
+            >
+              <mat-option
+                *ngFor="let cargoDischargeMode of cargoDischargeModesList"
+                [value]="cargoDischargeMode.id"
+              >
+                {{ cargoDischargeMode.modeName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem3">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Selection du site</mat-label>
+            <mat-select
+              [compareWith]="siteComparison"
+              [(value)]="zone.siteId"
+            >
+              <mat-option *ngFor="let site of sitesList" [value]="site.id">
+                {{ site.siteName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="inputGridItem4">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Selection du ligne</mat-label>
+            <mat-select
+              [compareWith]="ligneComparison"
+              [(value)]="zone.zoneAreaId"
+            >
+              <mat-option
+                *ngFor="let zoneArea of zoneAreasList"
+                [value]="zoneArea.id"
+              >
+                {{ zoneArea.zoneareaName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="inputGridItem5">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Point metrique debut</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="zone.zoneStart"
+              required="false"
+            />
+            <!-- <mat-error *ngIf="montantPortNet.invalid">{{montantPortNetErrorMsg}}</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="inputGridItem6">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Point metrique fin</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="zone.zoneEnd"
+              required="false"
+            />
+            <!-- <mat-error *ngIf="montantPortNet.invalid">{{montantPortNetErrorMsg}}</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="inputGridItem7">
+          <button class="btn" (click)="deleteZone(zone)">
+            <fa-icon style="margin: 5px" [icon]="faTrash"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="inputGrid">
+      
+
+      <div class="inputGridItemButton">
+        <button class="btn" (click)="addDischargePlanData()">
+          <fa-icon size="3x" style="margin: 5px" [icon]="faCheck"></fa-icon>
+        </button>
+      </div>
+    </div>
+    
+  <!-- </form> -->
+
+  
+
+  
+</mat-dialog-content>

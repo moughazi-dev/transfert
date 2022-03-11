@@ -1,0 +1,154 @@
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+  
+  
+        <li class="nav-item">
+          <a [routerLink]="['/acceuil']" class="brand-link">
+            <img src="./../assets/taqa-logo.png" alt="TAQA" style="opacity: .8">
+  
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [matMenuTriggerFor]="menu0" 
+          #tooltip="matTooltip"
+          matTooltip="Transfert"
+          [matTooltipPosition]="'below'"
+          matTooltipHideDelay="1000" class="nav-link"  role="button">
+          <fa-icon [icon]="faExchangeAlt" ></fa-icon>
+        
+          <mat-menu #menu0="matMenu">
+           <button mat-menu-item [routerLink]="['/programme-hebdomadaire']">Programme hebdomadaire</button>
+           <button mat-menu-item [routerLink]="['/transfert-quantite']">Suivi des quantites transférés</button>
+           <button mat-menu-item [routerLink]="['/saisie-niveaux-silos']">Saisie niveaux silos</button>
+           <button mat-menu-item [routerLink]="['/suivi-transfert-quantite']">Suivi transfert quantite</button>
+          </mat-menu>
+        
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [matMenuTriggerFor]="menu" 
+            #tooltip="matTooltip"
+            matTooltip="Stockage"
+            [matTooltipPosition]="'below'"
+            matTooltipHideDelay="1000" class="nav-link"   role="button">
+            <fa-icon [icon]="faWarehouse" ></fa-icon>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item [routerLink]="['/plan-stockage']">Nouveau plan de stockage</button>
+              <button mat-menu-item [routerLink]="['/plan-stockage-list']">Liste des plans de stockage</button>
+              <button mat-menu-item [routerLink]="['/plan-stockage']">Données du Port</button>
+              <button mat-menu-item [routerLink]="['/plan-stockage']">Données du Parc à charbon</button>
+            </mat-menu>
+          </a>
+        </li>
+
+        
+
+        <li class="nav-item">
+          <a [matMenuTriggerFor]="menuDechargement" #tooltip="matTooltip"
+          matTooltip="Déchargement"
+          [matTooltipPosition]="'below'"
+          matTooltipHideDelay="1000" class="nav-link"  role="button">
+          <fa-icon [icon]="faTruckLoading" ></fa-icon>
+          <mat-menu #menuDechargement="matMenu">
+            <button mat-menu-item [routerLink]="['/decharement-list']">Liste des Déchargements</button>
+          </mat-menu>
+        </a>
+        </li>
+  
+        <li class="nav-item">
+          <a [matMenuTriggerFor]="menu2" #tooltip="matTooltip"
+            matTooltip="Annexes"
+            [matTooltipPosition]="'below'"
+            matTooltipHideDelay="1000" class="nav-link"  role="button">
+            <fa-icon [icon]="faPaperclip" ></fa-icon>
+            <mat-menu #menu2="matMenu">
+              <button mat-menu-item [routerLink]="['/annexe-shift']">Shift</button>
+              <button mat-menu-item [routerLink]="['/dashboard/contact']">Formulaires de la DIC</button>
+              <button mat-menu-item [routerLink]="['/dashboard/contact']">Analyses chimiques</button>
+              <button mat-menu-item [routerLink]="['/dashboard/contact']">Travaux de maintenance</button>
+              <button mat-menu-item [routerLink]="['/dashboard/contact']">Gestion de la planification (des effectifs)</button>
+              <button mat-menu-item [routerLink]="['/dashboard/contact']">Gestion de la planification des silos</button>
+              
+            </mat-menu>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a #tooltip="matTooltip"
+          matTooltip="Indicateurs"
+          [matTooltipPosition]="'below'"
+          matTooltipHideDelay="1000" class="nav-link"  role="button"><fa-icon [icon]="faTachometerAlt" ></fa-icon></a>
+        </li>
+
+        <li class="nav-item">
+          <a #tooltip="matTooltip"
+          matTooltip="Reporting"
+          [matTooltipPosition]="'below'"
+          matTooltipHideDelay="1000" class="nav-link"  role="button"><fa-icon [icon]="faChartBar" ></fa-icon></a>
+        </li>
+
+        
+  
+        
+  
+        <!-- Fin Premier -->
+  
+  
+      </ul>
+  
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" >
+            <fa-icon [icon]="faUser" ><span class="brand-text font-weight-light">&nbspAdmin</span></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" >
+            <fa-icon [icon]="faPowerOff" ></fa-icon>
+          </a>
+        </li>
+  
+        <!-- <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" >
+            <fa-icon [icon]="faExpandArrowsAlt" ></fa-icon>
+          </a>
+        </li> -->
+  
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+     
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+
+          <div style="margin-top: 5px;">
+            <router-outlet></router-outlet>
+          </div>
+       
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+  
+     
+    </div>
+    <!-- /.content-wrapper -->
+  
+    
+  
+    <!-- Control Sidebar -->
+   
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->

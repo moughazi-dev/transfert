@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+.inputGrid {
+  margin-top: 20px;
+  padding: 9px;
+  display: grid;
+}
+
+.inputGridItem {
+  width: 90%;
+}

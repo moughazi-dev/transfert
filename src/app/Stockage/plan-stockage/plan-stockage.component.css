@@ -1,0 +1,97 @@
+table {
+    width: 100%;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }
+  
+  .input-section {
+    margin: 10px 10px;
+  }
+  
+  .filterSearch{
+    margin: 0px 10px;
+  }
+  
+  .example-container{
+    height: 100%;
+  }
+  
+  .status-section{
+    display: inline;
+  }
+  
+  .inputGrid {
+    margin: 20px 20px;
+    display: grid;
+    grid-gap: 10px;
+  }
+  
+  .cardStatistics{
+    margin-top: 10px 10px;
+    
+  }
+  
+  .cardStatistics1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  
+    background-color: #5a4a3d;
+  }
+  
+  .cardStatistics2 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  
+    background-color: #ca9766;
+  }
+  
+  .cardStatistics3 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #d3a4a5;
+  }
+  
+  .cardStatistics4 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #9eb5b8;
+  }
+  
+  .cardStatistics5 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #6679ac;
+  }
+  
+  .cardStatistics6 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  
+  
+  
+  @media(max-width: 600px) {
+    
+  }
+  
+  .tableHeader {
+    font-weight: bold;
+  }

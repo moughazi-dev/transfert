@@ -1,0 +1,228 @@
+
+<div class="m-5 mt-6">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="miniComp mt-5">
+            <p>Validation des quanités transferé durant le shift</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                Validation
+                </label>        
+            </div>
+            <br>
+            <button class="btn btn-warning">Sauvegarder</button>
+        </div>
+
+        <div class="miniComp">
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="miniComp">
+            <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Shift</mat-label>
+                <mat-select formControlName="shift" required>
+                    <mat-option>None</mat-option>
+                    <mat-option value="Shift 1">Shift 1</mat-option>
+                    <mat-option value="Shift 2">Shift 2</mat-option>
+                    <mat-option value="Shift 3">Shift 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
+        <div class="miniComp">
+            <mat-grid-list cols="6" rowHeight="3:1">
+                
+                <mat-grid-tile>
+                    <mat-label>Unite 1</mat-label>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-label>Unite 2</mat-label>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-label>Unite 3</mat-label>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-label>Unite 4</mat-label>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-label>Unite 5</mat-label>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-label>Unite 6</mat-label>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo A</mat-label>
+                        <input matInput formControlName="siloA1" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo A</mat-label>
+                        <input matInput formControlName="siloA2" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo A</mat-label>
+                        <input matInput formControlName="siloA3" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo A</mat-label>
+                        <input matInput formControlName="siloA4" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo A</mat-label>
+                        <input matInput formControlName="siloA5" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo A</mat-label>
+                        <input matInput formControlName="siloA6" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo B</mat-label>
+                        <input matInput formControlName="siloB1" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo B</mat-label>
+                        <input matInput formControlName="siloB2" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo B</mat-label>
+                        <input matInput formControlName="siloB3" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo B</mat-label>
+                        <input matInput formControlName="siloB4" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo B</mat-label>
+                        <input matInput formControlName="siloB5" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo B</mat-label>
+                        <input matInput formControlName="siloB6" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo C</mat-label>
+                        <input matInput formControlName="siloC1" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo C</mat-label>
+                        <input matInput formControlName="siloC2" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo C</mat-label>
+                        <input matInput formControlName="siloC3" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo C</mat-label>
+                        <input matInput formControlName="siloC4" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo C</mat-label>
+                        <input matInput formControlName="siloC5" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo C</mat-label>
+                        <input matInput formControlName="siloC6" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo D</mat-label>
+                        <input matInput formControlName="siloD1" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo D</mat-label>
+                        <input matInput formControlName="siloD2" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo D</mat-label>
+                        <input matInput formControlName="siloD3" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo D</mat-label>
+                        <input matInput formControlName="siloD4" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo D</mat-label>
+                        <input matInput formControlName="siloD5" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo D</mat-label>
+                        <input matInput formControlName="siloD6" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo E</mat-label>
+                        <input matInput formControlName="siloE1" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Silo E</mat-label>
+                        <input matInput formControlName="siloE2" required>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+               
+        <div class="miniComp">
+            <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+        </div>
+        
+      </form>
+      {{formGroup.value|json}}
+</div>

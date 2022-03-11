@@ -1,0 +1,317 @@
+<mat-dialog-content style="width: 100%; padding: 12px" class="mat-typography">
+  <form style="margin: 12px 0" [formGroup]="dischargeInfos">
+    <ng-template>Saisie déchargement</ng-template>
+    <mat-accordion class="example-headers-align" multi>
+      <div class="inputGrid">
+        <div class="inputGridItemShift1">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Date</mat-label>
+            <input
+              (dateChange)="getMembersByShiftOrderAndShiftDate()"
+              matInput
+              [matDatepicker]="shiftDateDP"
+              required="false"
+              formControlName="shiftDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="shiftDateDP"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #shiftDateDP></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItemShift2">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Shift</mat-label>
+            <mat-select
+              (selectionChange)="getMembersByShiftOrderAndShiftDate()"
+              required="false"
+              formControlName="shiftOrder"
+            >
+              <mat-option value="1">Shift 1</mat-option>
+              <mat-option value="2">Shift 2</mat-option>
+              <mat-option value="3">Shift 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="isLoading"><mat-spinner></mat-spinner></div>
+
+        <div class="inputGridItemShift3">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Chef d'escale</mat-label>
+            <mat-select
+              required="false"
+              [compareWith]="chefEscaleCompare"
+              [(value)]="memberSelected"
+            >
+              <mat-option *ngFor="let ce of chefsEscaleList" [value]="ce">
+                {{ ce.person_name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Quantités déchargées</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="overflow-x: scroll" class="gridsContainer">
+          <button class="btn" (click)="addDischargedQty()">
+            <fa-icon style="margin: 5px" [icon]="faPlus"></fa-icon>
+          </button>
+
+          <div *ngFor="let dischargedQuantity of dischargedQuantitiesList">
+            <div class="inputGrid">
+              <div class="inputGridItemQtyDischarged1">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Operateur</mat-label>
+                  <mat-select
+                    required="false"
+                    [compareWith]="objectComparisonFunction"
+                    [(value)]="dischargedQuantity.operateur"
+                  >
+                    <mat-option
+                      *ngFor="let operator of operateursList"
+                      [value]="operator"
+                    >
+                      {{ operator.person_name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged2">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Début</mat-label>
+                  <input
+                    type="time"
+                    matInput
+                    required="false"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="dischargedQuantity.debut"
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged3">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Fin</mat-label>
+                  <input
+                    type="time"
+                    matInput
+                    required="false"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="dischargedQuantity.fin"
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged4">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Equipement</mat-label>
+                  <mat-select
+                    required="false"
+                    [compareWith]="objectComparisonFunction"
+                    [(value)]="dischargedQuantity.equipement"
+                  >
+                    <mat-option
+                      *ngFor="let equipement of equipementsList"
+                      [value]="equipement"
+                    >
+                      {{ equipement.equipementName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged5">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Tonnage</mat-label>
+                  <input
+                    matInput
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="dischargedQuantity.tonnage"
+                    placeholder="Tonnage"
+                    required="false"
+                    type="number"
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged6">
+                <button
+                  class="btn"
+                  (click)="deleteDischargedQty(dischargedQuantity)"
+                >
+                  <fa-icon style="margin: 5px" [icon]="faTrash"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="dischargedQuantitiesList.length > 0" class="inputGrid">
+            <div class="inputGridItemQtyDischarged5">
+              <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Total Tonnage</mat-label>
+                <input
+                  matInput
+                  placeholder="Tonnage"
+                  required="false"
+                  type="number"
+                  [disabled]="true"
+                  [ngModelOptions]="{ standalone: true }"
+                  [(ngModel)]="totalTonnageQtyDechargee"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Contamination</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div style="overflow-x: scroll" class="gridsContainer">
+          <button class="btn" (click)="addDischargedContamination()">
+            <fa-icon style="margin: 5px" [icon]="faPlus"></fa-icon>
+          </button>
+
+          <div
+            *ngFor="
+              let cargoDischargeContamination of cargoDischargeContaminationsList
+            "
+          >
+            <div style="overflow-x: scroll" class="inputGrid">
+              <div class="inputGridItemQtyDischarged1">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Type</mat-label>
+                  <mat-select
+                    required="false"
+                    [compareWith]="objectComparisonFunction"
+                    [(value)]="cargoDischargeContamination.typeContamination"
+                  >
+                    <mat-option
+                      *ngFor="let contamination of contaminationsList"
+                      [value]="contamination"
+                    >
+                      {{ contamination.contaminationName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged2">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Tonnage (estimation)</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    required="false"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="
+                      cargoDischargeContamination.tonnageContamination
+                    "
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged3">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>Zone</mat-label>
+                  <mat-select
+                    required="false"
+                    [compareWith]="objectComparisonFunction"
+                    [(value)]="
+                      cargoDischargeContamination.zoneAreaContamination
+                    "
+                  >
+                    <mat-option
+                      *ngFor="let zoneArea of zoneAreasList"
+                      [value]="zoneArea"
+                    >
+                      {{ zoneArea.zoneareaName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged4">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>PM Début</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    required="false"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="
+                      cargoDischargeContamination.pmDebutContamination
+                    "
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged5">
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>PM Fin</mat-label>
+                  <input
+                    type="number"
+                    matInput
+                    required="false"
+                    [ngModelOptions]="{ standalone: true }"
+                    [(ngModel)]="cargoDischargeContamination.pmFinContamination"
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="inputGridItemQtyDischarged6">
+                <button
+                  class="btn"
+                  (click)="
+                    deleteDischargedContamination(cargoDischargeContamination)
+                  "
+                >
+                  <fa-icon style="margin: 5px" [icon]="faTrash"></fa-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Perturbation</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <!-- <mat-label>Perturbation</mat-label> -->
+          <mat-select
+            multiple
+            required="false"
+            [compareWith]="objectComparisonFunction"
+            formControlName="perturbations"
+          >
+            <mat-option
+              *ngFor="let perturbation of perturbationsList"
+              [value]="perturbation"
+            >
+              {{ perturbation.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div>
+      <button mat-raised-button color="primary" (click)="valider()" style="margin: 12px 0" mat-button>
+        Sauvegarder
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

@@ -1,0 +1,308 @@
+<div class="m-3 pt-2">
+    <div class="search">
+        <h1>Programme hebdomadaire</h1>
+    </div>
+    <br>
+    <div class="search">
+        <form [formGroup]="formGroup">
+            <h3>Période / Client</h3>
+            <div>
+                <mat-form-field appearance="fill" class="mr-4">
+                    <mat-label>DU</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="dateDebut" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+        
+                <mat-form-field appearance="fill" class="mr-4">
+                    <mat-label>AU</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateFin" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="inputGridItem" appearance="fill">
+                    <mat-label>Client - Unite</mat-label>
+                    <input matInput type="text" formControlName="clientUnite" required/>
+                </mat-form-field>
+            </div> 
+            <div>
+                <button mat-raised-button color="primary" (click)="search()">Recherche</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div *ngIf="thereIsData" class="search">
+    <h2>Programme de base</h2>
+
+    <div class="row mb-5" style="height: 10px;">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloA</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloB</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloC</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloD</p>
+        </div>
+        <div class="col-md-2" *ngIf="isUnite1or2">
+            <p>{{unite}} - SiloE</p>
+        </div>
+        <div class="col-md-2">
+            <p>Commentaire</p>
+        </div>
+    </div>
+    <div class="row mb-5" style="height: 7px;">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2" *ngIf="isUnite1or2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+    </div>
+    <div>
+        <form [formGroup]="formSaisie">
+            <div formArrayName="options">
+                <div class="row mb-5" style="height: 23px;" *ngFor="let option of options().controls; let i = index" [formGroupName]="i">
+                    <div class="col-md-1">
+                        <input formControlName="date" type="text" formControlName="date" hidden [(ngModel)]="listDate[i]">
+                        <p>{{listDate[i]}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName = "cargoA" required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoB"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoC"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoD"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2" *ngIf="isUnite1or2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoE"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>commentaire</mat-label>
+                            <textarea matInput formControlName= "comment" required></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" (click)="EnregistrerPrimary()">Enregistrer</button>
+        </form>
+    </div>
+</div>
+<br><br>
+<div *ngIf="thereIsData" class="search">
+    <h2>Programme de secours</h2>
+
+    <div class="row mb-5" style="height: 10px;">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloA</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloB</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloC</p>
+        </div>
+        <div class="col-md-2">
+            <p>{{unite}} - SiloD</p>
+        </div>
+        <div class="col-md-2" *ngIf="isUnite1or2">
+            <p>{{unite}} - SiloE</p>
+        </div>
+        <div class="col-md-2">
+            <p>Commentaire</p>
+        </div>
+    </div>
+    <div class="row mb-5" style="height: 7px;">
+        <div class="col-md-1">
+            
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+        <div class="col-md-2" *ngIf="isUnite1or2">
+            <p><fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon></p>
+        </div>
+    </div>
+    <div>
+        <form [formGroup]="formSaisie">
+            <div formArrayName="options">
+                <div class="row mb-5" style="height: 23px;" *ngFor="let option of options().controls; let i = index" [formGroupName]="i">
+                    <div class="col-md-1">
+                        <p formControlName = "date">{{listDate[i]}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName = "cargoA" required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoB"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoC"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoD"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2" *ngIf="isUnite1or2">
+                        <mat-form-field class="inputGridItem" appearance="fill">
+                            <mat-label>Cargaison</mat-label>
+                            <mat-select formControlName= "cargoE"  required>
+                                <mat-option *ngFor="let cargo of dataEx" [value]="cargo.cargoId">
+                                    {{cargo.vessel +" "+ cargo.externalId}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>commentaire</mat-label>
+                            <textarea matInput formControlName= "comment" required></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <button mat-raised-button color="primary" >Enregistrer</button>
+        </form>
+    </div>
+</div>

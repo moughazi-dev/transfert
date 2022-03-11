@@ -1,0 +1,30 @@
+.inputGrid {
+  margin-top: 20px;
+  padding: 9px;
+  display: grid;
+}
+
+.inputGridItem {
+  width: 90%;
+}
+
+.inputGridItem1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.inputGridItem2 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.inputGridItem3 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}

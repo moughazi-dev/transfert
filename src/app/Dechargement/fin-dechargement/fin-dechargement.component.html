@@ -1,0 +1,62 @@
+<mat-dialog-content style="min-width: 500px; padding: 12px" class="mat-typography">
+    <form [formGroup]="navireInfos">
+        <div class="inputGrid">
+          <div class="inputGridItem1">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin de déchargement</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endDischargeDP"
+                required="false"
+                formControlName="endDischarge"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endDischargeDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endDischargeDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem2">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Fin de bulldozer</mat-label>
+              <input
+                matInput
+                [matDatepicker]="endBulldozerDP"
+                required="false"
+                formControlName="endBulldozer"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="endBulldozerDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #endBulldozerDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="inputGridItem3">
+            <mat-form-field class="inputGridItem" appearance="fill">
+              <mat-label>Appareillage</mat-label>
+              <input
+                matInput
+                [matDatepicker]="sailingDateDP"
+                required="false"
+                formControlName="sailingDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="sailingDateDP"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #sailingDateDP></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div>
+          <button mat-raised-button color="primary" (click)="validerFinDechargement()" mat-button >Finir le déchargement</button>
+        </div>
+      </form>
+  </mat-dialog-content>
+  

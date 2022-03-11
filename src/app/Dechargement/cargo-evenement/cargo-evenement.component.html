@@ -1,0 +1,208 @@
+<mat-dialog-content
+  style="min-width: 600px; padding: 12px"
+  class="mat-typography"
+>
+  <div style="overflow-x: scroll" class="gridsContainer">
+    <button *ngIf="!isUpdate" class="btn" (click)="addCargoEvent()">
+      <fa-icon style="margin: 5px" [icon]="faPlus"></fa-icon>
+    </button>
+    <button *ngIf="isUpdate" class="btn" (click)="submitUpdateCargoEvent()">
+      <fa-icon style="margin: 5px" [icon]="faCheck"></fa-icon>
+    </button>
+
+    <div>
+      <table mat-table [dataSource]="dischargeEventsList">
+        <ng-container matColumnDef="event">
+          <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+            Evenement
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.evenement ? element.evenement.name : null }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="from">
+          <th class="tableHeader" mat-header-cell *matHeaderCellDef>Du</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.startDate }} {{ element.startTime }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="to">
+          <th class="tableHeader" mat-header-cell *matHeaderCellDef>Au</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.endDate }} {{ element.endTime }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th class="tableHeader" mat-header-cell *matHeaderCellDef>Total</th>
+          <td mat-cell *matCellDef="let element">
+            {{
+              calcTotalTime(
+                element.startDate,
+                element.startTime,
+                element.endDate,
+                element.endTime
+              )
+            }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="observation">
+          <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+            Observation
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.observation }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+            Actions.
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <fa-icon
+              (click)="updateCargoEvent(element)"
+              style="margin: 5px"
+              [icon]="faSignature"
+            ></fa-icon>
+            <fa-icon
+              (click)="deleteCargoEvent(element)"
+              style="margin: 5px"
+              [icon]="faTrash"
+            ></fa-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <form style="margin: 12px 0" [formGroup]="evenementFG">
+      <div class="inputGrid">
+        <div class="inputGridItem1">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Shift</mat-label>
+            <mat-select required="false" formControlName="shiftOrder">
+              <mat-option value="1">Shift 1</mat-option>
+              <mat-option value="2">Shift 2</mat-option>
+              <mat-option value="3">Shift 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem2">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Operateur</mat-label>
+            <mat-select required="false" formControlName="operateur">
+              <mat-option
+                *ngFor="let operator of operatorsList"
+                [value]="operator"
+              >
+                {{ operator.person_name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem3">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Evenement</mat-label>
+            <mat-select required="false" formControlName="evenement">
+              <mat-option
+                *ngFor="let evenement of evenementsList"
+                [value]="evenement"
+              >
+                {{ evenement.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem4">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Date Début</mat-label>
+            <input
+              required="false"
+              matInput
+              [matDatepicker]="picker"
+              formControlName="startDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem5">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Heure Début</mat-label>
+            <input
+              type="time"
+              matInput
+              required="false"
+              formControlName="startTime"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem6">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Date Fin</mat-label>
+            <input
+              required="false"
+              matInput
+              [matDatepicker]="shiftDateDP"
+              formControlName="endDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="shiftDateDP"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #shiftDateDP></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem7">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Heure Fin</mat-label>
+            <input
+              type="time"
+              matInput
+              required="false"
+              formControlName="endTime"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="inputGridItem8">
+          <mat-form-field class="inputGridItem" appearance="fill">
+            <mat-label>Observation</mat-label>
+            <input matInput required="false" formControlName="observation" />
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+
+    <!-- <div *ngFor="let dischargeEvent of dischargeEventsList; let i=index">
+      
+    </div> -->
+  </div>
+
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="validerAddEvents()"
+      style="margin: 12px 0"
+      mat-button
+    >
+      Sauvegarder
+    </button>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,123 @@
+.commandspan {
+    margin-left: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .buttonGroup {
+    margin-top: 45px;
+    margin-bottom: 45px;
+  }
+  
+  .buttonItem {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  
+  .inputLine {
+  }
+  
+  .inputLineItem {
+    margin-left: 45px;
+  }
+  
+  .inputGrid {
+    margin-top: 20px;
+    display: grid;
+  }
+  
+  .inputGridItem {
+    width: 90%;
+  }
+  
+  .inputGridItem1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  
+  .inputGridItem2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  
+  .inputGridItem3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  
+  .inputGridItem4 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+  
+  .inputGridItem5 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+  
+  .inputGridItem6 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+  
+  .inputGridItem7 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5;
+  }
+  
+  .inputGridItem7_5 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 5;
+    grid-row-end: 6;
+  }
+  
+  .inputGridItem8 {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 5;
+      grid-row-end: 6;
+    }
+  
+  .btn {
+    margin: 0 10px;
+  }
+  
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

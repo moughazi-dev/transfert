@@ -1,0 +1,93 @@
+<div class="m-5 mt-6">
+    <form [formGroup]="quantiteTransfereFormGroup" (ngSubmit)="onSubmit()">
+        <div class="miniComp mt-5">
+            <p>Validation des quanités transferé durant le shift</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                Validation
+                </label>        
+            </div>
+            <br>
+            <button class="btn btn-warning">Sauvegarder</button>
+        </div>
+
+        <div class="miniComp">
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="miniComp">
+            <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Shift</mat-label>
+                <mat-select formControlName="shift" required>
+                    <mat-option>None</mat-option>
+                    <mat-option value="Shift 1">Shift 1</mat-option>
+                    <mat-option value="Shift 2">Shift 2</mat-option>
+                    <mat-option value="Shift 3">Shift 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+   
+        <div class="miniComp" formArrayName="options">
+          <div>
+              <fa-icon
+                (click)="AddOption()"
+                style="margin: 5px"
+                [icon]="faPlusCircle"
+              ></fa-icon>
+          </div>
+           <div *ngFor="let option of options().controls; let i = index" class="separate-input"  [formGroupName]="i">
+
+              <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Unite</mat-label>
+                <mat-select formControlName= "unite_id" (selectionChange)="getSilos($event)" required>
+                    <mat-option *ngFor="let unit of ListUnits" [value]="unit.id">
+                      {{unit.unitName}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+                <mat-form-field class="inputGridItem" appearance="fill">
+                  <mat-label>De</mat-label>
+                  <input matInput type="time" formControlName= "heureDebut" required>
+                </mat-form-field>
+
+              <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>A</mat-label>
+                <input matInput type="time" formControlName= "heureFin" required>
+              </mat-form-field>
+
+              <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Silo</mat-label>
+                <mat-select formControlName= "silo" required>
+                    <mat-option *ngFor="let silo of ListSilos" [value]="silo.id">
+                      {{silo.subsystemName}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="inputGridItem" appearance="fill">
+                <mat-label>Quantité</mat-label>
+                <input matInput type="text" formControlName= "quantite" required>
+              </mat-form-field>
+              <fa-icon style="margin: 5px" 
+                (click)="removeOption(i)"
+                [icon]="faTimesCircle">
+              </fa-icon>
+              <fa-icon style="margin: 5px"
+                (click)="AddOption()" 
+                [icon]="faFileSignature">
+              </fa-icon>
+            </div>  
+            
+           </div>      
+           <div class="miniComp">
+            <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+        </div>
+        {{quantiteTransfereFormGroup.value|json}}
+      </form>
+</div>

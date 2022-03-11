@@ -1,0 +1,300 @@
+<mat-dialog-content
+  style="min-width: 600px; padding: 12px"
+  class="mat-typography"
+>
+
+<button *ngIf="!isUpdate" class="btn" (click)="addCargoOutage()">
+    <fa-icon style="margin: 5px" [icon]="faPlus"></fa-icon>
+  </button>
+  <!-- <button *ngIf="isUpdate" class="btn" (click)="submitUpdateCargoEvent()">
+    <fa-icon style="margin: 5px" [icon]="faCheck"></fa-icon>
+  </button> -->
+
+<div>
+    <table mat-table [dataSource]="outagesList">
+      <ng-container matColumnDef="equipement">
+        <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+          Equipement
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.equipement ? element.equipement.equipementName : null }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cause">
+        <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+            Cause
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.cause ? element.cause.causeName : null }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="from">
+        <th class="tableHeader" mat-header-cell *matHeaderCellDef>Du</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.startDate }} {{ element.startTime }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="to">
+        <th class="tableHeader" mat-header-cell *matHeaderCellDef>Au</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.endDate }} {{ element.endTime }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th class="tableHeader" mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">
+          {{
+            calcTotalTime(
+              element.startTime,
+              element.endTime
+            )
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="observation">
+        <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+          Observation
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.observation }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th class="tableHeader" mat-header-cell *matHeaderCellDef>
+          Actions.
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <fa-icon
+            (click)="updateCargoOutage(element)"
+            style="margin: 5px"
+            [icon]="faSignature"
+          ></fa-icon>
+          <fa-icon
+            (click)="deleteCargoOutage(element)"
+            style="margin: 5px"
+            [icon]="faTrash"
+          ></fa-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <form style="margin: 12px 0" [formGroup]="arretsFG">
+    <div class="inputGrid">
+      <div class="inputGridItem1">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Date</mat-label>
+          <input
+            (dateChange)="getMembersByShiftOrderAndShiftDate()"
+            matInput
+            [matDatepicker]="shiftDateDP"
+            required="false"
+            formControlName="shiftDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="shiftDateDP"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #shiftDateDP></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem2">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Shift</mat-label>
+          <mat-select
+            (selectionChange)="getMembersByShiftOrderAndShiftDate()"
+            required="false"
+            formControlName="shiftOrder"
+          >
+            <mat-option value="1">Shift 1</mat-option>
+            <mat-option value="2">Shift 2</mat-option>
+            <mat-option value="3">Shift 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="isLoading"><mat-spinner></mat-spinner></div>
+
+      <div class="inputGridItem3">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Operateur</mat-label>
+          <mat-select
+            required="false"
+            [compareWith]="operatorCompare"
+            [(value)]="memberSelected"
+          >
+            <mat-option
+              *ngFor="let operator of operateursList"
+              [value]="operator"
+            >
+              {{ operator.person_name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem4">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Début</mat-label>
+          <input
+            type="time"
+            matInput
+            required="false"
+            formControlName="debut"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem5">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Fin</mat-label>
+          <input type="time" matInput required="false" formControlName="fin" />
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem6">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Groupe d'équipe</mat-label>
+          <mat-select
+            (selectionChange)="getEquipementsCategories()"
+            required="false"
+            [compareWith]="groupeEquipementCompare"
+            formControlName="equipmentGroupId"
+          >
+            <mat-option
+              *ngFor="let equipementGroupe of equipementGroupesList"
+              [value]="equipementGroupe"
+            >
+              {{ equipementGroupe.groupName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem7">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Systeme fonctionnel</mat-label>
+          <mat-select
+            (selectionChange)="getEquipements()"
+            required="false"
+            [compareWith]="categoryEquipementCompare"
+            formControlName="equipmentCategoryId"
+          >
+            <mat-option
+              *ngFor="let equipementCategory of equipementCategoriesList"
+              [value]="equipementCategory.equipmentCategoryId"
+            >
+              {{ equipementCategory.categoryName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem8">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Equipement</mat-label>
+          <mat-select
+            required="false"
+            [compareWith]="equipementCompare"
+            [(value)]="equipementSelected"
+          >
+            <mat-option
+              *ngFor="let equipement of equipementsList"
+              [value]="equipement"
+            >
+              {{ equipement.equipementName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem9">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Metier</mat-label>
+          <mat-select
+            required="false"
+            [compareWith]="categoryTypeCompare"
+            formControlName="typeId"
+          >
+            <mat-option
+              *ngFor="let outageTypes of outageTypesList"
+              [value]="outageTypes.typeId"
+            >
+              {{ outageTypes.typeName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem10">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Gategorie de l'arret</mat-label>
+          <mat-select
+            required="false"
+            [compareWith]="outageGategoryCompare"
+            formControlName="categoryId"
+          >
+            <mat-option
+              *ngFor="let outageCategorie of outageCategoriesesList"
+              [value]="outageCategorie"
+            >
+              {{ outageCategorie.categoryName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem11">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Cause</mat-label>
+          <mat-select
+            required="false"
+            [compareWith]="outageCauseCompare"
+            [(value)]="outageSelected"
+          >
+            <mat-option
+              *ngFor="let outageCause of outageCausesList"
+              [value]="outageCause"
+            >
+              {{ outageCause.causeName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="inputGridItem12">
+        <mat-form-field class="inputGridItem" appearance="fill">
+          <mat-label>Observation</mat-label>
+          <input
+            matInput
+            required="false"
+            formControlName="observation"
+          />
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="valider()"
+        style="margin: 12px 0"
+        mat-button
+      >
+        Sauvegarder
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>
